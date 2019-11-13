@@ -79,8 +79,12 @@ class Timer:
         if not self.notified and self.time < 0:
             self.notified = True
             try:
-                call(["notify-send", "-t", "0", "-u", "critical", "Pomodoro",
-                      "Timer reached zero"], stdout=DEVNULL, stderr=DEVNULL)
+                call([
+                    "notify-send", "-t", "0", "-u", "normal", "Pomodoro Timer",
+                    "Short break is over, back to work."
+                ],
+                     stdout=DEVNULL,
+                     stderr=DEVNULL)
             except FileNotFoundError:
                 # Skip if notify-send isn't installed
                 pass
