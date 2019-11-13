@@ -14,9 +14,18 @@ from subprocess import call, DEVNULL
 
 SOCKDIR = os.environ.get("XDG_RUNTIME_DIR", "/var/tmp")
 SOCKFILE = os.path.join(SOCKDIR, "polypomo.sock")
-TOMATO = u"\U0001F345"
-BREAK = u"\U0001F3D6"
 
+DIVIDER = u'%{O-8}%{F#5b6268}%{T4}|%{T-}%{F-}%{O8}'
+
+WORK_ACTIVE_PREFIX = DIVIDER + u'%{F#da8548}%{T3}%{T-}%{O8}'
+WORK_ACTIVE_SUFFIX = u'%{F-}'
+WORK_INACTIVE_PREFIX = DIVIDER + u'%{F#5b6268}%{T3}%{T-}%{O8}'
+WORK_INACTIVE_SUFFIX = u'%{F-}'
+
+BREAK_ACTIVE_PREFIX = DIVIDER + u'%{F#98be65}%{T3}%{T-}%{O8}'
+BREAK_ACTIVE_SUFFIX = u'%{F-}'
+BREAK_INACTIVE_PREFIX = DIVIDER + u'%{F#5b6268}%{T3}ￊ%{T-}%{O8}'
+BREAK_INACTIVE_SUFFIX = u'%{F-}'
 
 class Timer:
     def __init__(self, remtime):
@@ -90,8 +99,22 @@ class Status:
         self.locked = True
 
     def show(self):
-        status = TOMATO if self.status == "work" else BREAK
-        sys.stdout.write("{} {}\n".format(status, self.timer))
+        if self.status == "work":
+            if self.active:
+                prefix = WORK_ACTIVE_PREFIX
+                suffix = WORK_ACTIVE_SUFFIX
+            else:
+                prefix = WORK_INACTIVE_PREFIX
+                suffix = WORK_INACTIVE_SUFFIX
+        else:
+            if self.active:
+                prefix = BREAK_ACTIVE_PREFIX
+                suffix = BREAK_ACTIVE_SUFFIX
+            else:
+                prefix = BREAK_INACTIVE_PREFIX
+                suffix = BREAK_INACTIVE_SUFFIX
+
+        sys.stdout.write("{}{}{}\n".format(prefix, self.timer, suffix))
         sys.stdout.flush()
 
     def toggle(self):
