@@ -13,7 +13,7 @@ from subprocess import call, DEVNULL
 
 
 SOCKDIR = os.environ.get("XDG_RUNTIME_DIR", "/var/tmp")
-SOCKFILE = os.path.join(SOCKDIR, "pomodoro-timer.sock")
+SOCKFILE = os.path.join(SOCKDIR, "pomodoro_timer.sock")
 
 DIVIDER = u'%{O-8}%{F#5b6268}%{T4}|%{T-}%{F-}%{O8}'
 

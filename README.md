@@ -12,19 +12,19 @@ modules-right = <other-modules> polypomo <other-modules>
 [module/polypomo]
 type = custom/script
 
-exec = /path/to/pomodoro-timer.py
+exec = /path/to/pomodoro_timer.py
 tail = true
 
 label = %output%
-click-left = /path/to/pomodoro-timer.py toggle
-click-right = /path/to/pomodoro-timer.py end
-click-middle = /path/to/pomodoro-timer.py lock
-scroll-up = /path/to/pomodoro-timer.py time +60
-scroll-down = /path/to/pomodoro-timer.py time -60
+click-left = /path/to/pomodoro_timer.py toggle
+click-right = /path/to/pomodoro_timer.py end
+click-middle = /path/to/pomodoro_timer.py lock
+scroll-up = /path/to/pomodoro_timer.py time +60
+scroll-down = /path/to/pomodoro_timer.py time -60
 ```
 
 In order to prevent accidental changes to the timer, polypomo starts in `locked` mode.  
-Middle click the widget or run `pomodoro-timer.py lock` to toggle locked state.  
+Middle click the widget or run `pomodoro_timer.py lock` to toggle locked state.  
 You can then scroll-up/down to change time.
 
 If you wish to permanently change the default times start polypomo with `--worktime seconds` and `--breaktime seconds`.
