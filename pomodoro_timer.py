@@ -15,17 +15,15 @@ from subprocess import call, DEVNULL
 SOCKDIR = os.environ.get("XDG_RUNTIME_DIR", "/var/tmp")
 SOCKFILE = os.path.join(SOCKDIR, "pomodoro_timer.sock")
 
-DIVIDER = u'%{O-8}%{F#5b6268}%{T4}|%{T-}%{F-}%{O8}'
+WORK_ACTIVE_PREFIX = u'%{F#ff6c6b}%{T3}利%{T-}%{O4}%{T2}'
+WORK_ACTIVE_SUFFIX = u'%{T-}%{F-}'
+WORK_INACTIVE_PREFIX = u'%{F#5b6268}%{T3}利%{T-}%{O4}%{T2}'
+WORK_INACTIVE_SUFFIX = u'%{T-}%{F-}'
 
-WORK_ACTIVE_PREFIX = DIVIDER + u'%{F#da8548}%{T3}%{T-}%{O8}'
-WORK_ACTIVE_SUFFIX = u'%{F-}'
-WORK_INACTIVE_PREFIX = DIVIDER + u'%{F#5b6268}%{T3}%{T-}%{O8}'
-WORK_INACTIVE_SUFFIX = u'%{F-}'
-
-BREAK_ACTIVE_PREFIX = DIVIDER + u'%{F#98be65}%{T3}%{T-}%{O8}'
-BREAK_ACTIVE_SUFFIX = u'%{F-}'
-BREAK_INACTIVE_PREFIX = DIVIDER + u'%{F#5b6268}%{T3}ￊ%{T-}%{O8}'
-BREAK_INACTIVE_SUFFIX = u'%{F-}'
+BREAK_ACTIVE_PREFIX = u'%{F#98be65}%{T3}利%{T-}%{O4}%{T2}'
+BREAK_ACTIVE_SUFFIX = u'%{T-}%{F-}'
+BREAK_INACTIVE_PREFIX = u'%{F#5b6268}%{T3}利%{T-}%{O4}%{T2}'
+BREAK_INACTIVE_SUFFIX = u'%{T-}%{F-}'
 
 class Timer:
     def __init__(self, remtime):
