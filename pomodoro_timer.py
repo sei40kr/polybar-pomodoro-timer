@@ -289,7 +289,7 @@ def parse_args():
                         help="Default work timer time in seconds")
     parser.add_argument("--breaktime",
                         type=int,
-                        default=5 * 60,
+                        default=3 * 60,
                         help="Default break timer time in seconds")
     parser.set_defaults(func=action_display)
 
