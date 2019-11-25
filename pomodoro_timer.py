@@ -141,8 +141,6 @@ class Status:
         self.timer.change(op, seconds)
 
     def next_timer(self):
-        self.active = False
-
         if self.status == "work":
             self.status = "break"
             self.timer = Timer(self.breaktime)
