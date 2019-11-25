@@ -78,7 +78,7 @@ class Timer:
             self.notified = True
             try:
                 call([
-                    "notify-send", "-t", "0", "-u", "normal", "Pomodoro Timer",
+                    "notify-send", "-t", "0", "-u", "low", "Pomodoro Timer",
                     "Short break is over, back to work."
                 ],
                      stdout=DEVNULL,
